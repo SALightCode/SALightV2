@@ -7,8 +7,6 @@ export default function Background() {
       <div className="smoke smoke-b" />
       <div className="smoke smoke-c" />
       <div className="smoke smoke-d" />
-      <div className="orb orb-green" />
-      <div className="orb orb-grey" />
     </>
   );
 }

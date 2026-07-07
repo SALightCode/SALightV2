@@ -1,103 +1,132 @@
 import {
   BadgeCheck,
-  Code2,
-  Compass,
-  Layers3,
-  LineChart,
-  MessageCircle,
+  CalendarCheck,
+  CircuitBoard,
+  Lightbulb,
+  Mail,
+  MapPinned,
+  Music2,
   Palette,
-  Rocket,
+  ShieldCheck,
   Sparkles,
+  Users,
   Zap
 } from "lucide-react";
 
-export const services = [
+export const navItems = [
+  { label: "Start", href: "/" },
+  { label: "Leistungen", href: "/leistungen" },
+  { label: "Geräte", href: "/geraete" },
+  { label: "Partner", href: "/partner" },
+  { label: "Impressum", href: "/impressum" }
+];
+
+export const benefits = [
+  {
+    icon: ShieldCheck,
+    title: "Erfahrung & Kompetenz",
+    text: "Profitieren Sie von langjähriger Erfahrung, technischem Know-how und sicherer Umsetzung."
+  },
   {
     icon: Palette,
-    title: "Webdesign",
-    text: "Atmosphärische Websites mit dunklem Premium-Look, klarer Typografie und visueller Tiefe."
+    title: "Individuelle Lösungen",
+    text: "Maßgeschneiderte Lichtkonzepte, die perfekt zu Ihrer Veranstaltung und Location passen."
   },
   {
-    icon: Code2,
-    title: "Development",
-    text: "Saubere React-/Vite-Umsetzung, schnelle Ladezeiten und eine Struktur, die erweiterbar bleibt."
+    icon: BadgeCheck,
+    title: "Professionelle Ausführung",
+    text: "Von der Planung bis zur Umsetzung steht SALight Ihnen mit Rat und Tat zur Seite."
   },
   {
-    icon: LineChart,
-    title: "Performance",
-    text: "Optimierte Nutzerführung, starke Conversion-Flows und reduzierte Ablenkung."
-  },
-  {
-    icon: Layers3,
-    title: "Brand System",
-    text: "Farben, Abstände, Komponenten und visuelle Sprache aus einem konsistenten System."
+    icon: Zap,
+    title: "Modernste Technik",
+    text: "Hochwertige Lichttechnik sorgt für Atmosphäre, Wirkung und den extra Touch."
   }
 ];
 
-export const process = [
+export const services = [
   {
-    step: "01",
-    title: "Positionierung",
-    text: "Wir definieren Wirkung, Zielgruppe und die klare Botschaft deiner Website."
+    icon: Lightbulb,
+    title: "Lichtkonzepte",
+    text: "Individuelle Beleuchtung für Feiern, Veranstaltungen, Locations und besondere Momente."
   },
   {
-    step: "02",
-    title: "Designsystem",
-    text: "Dunkle Flächen, grauer Rauch, grüne Akzente und hochwertige Komponenten."
+    icon: CircuitBoard,
+    title: "Programmierung",
+    text: "Steuerung und Programmierung komplexer Beleuchtungssysteme für präzise Shows."
   },
   {
-    step: "03",
-    title: "Launch",
-    text: "Vercel-ready Deployment, Domain-Anbindung und finale technische Optimierung."
+    icon: MapPinned,
+    title: "Location-Gestaltung",
+    text: "Atmosphärische Ausleuchtung von Räumen, Bühnen, Außenbereichen und Eventflächen."
+  },
+  {
+    icon: Music2,
+    title: "Eventbegleitung",
+    text: "Technische Betreuung vor Ort, damit Licht, Stimmung und Ablauf zuverlässig funktionieren."
+  }
+];
+
+export const equipment = [
+  "Moving Heads",
+  "LED Bars",
+  "Ambient- und Architekturlicht",
+  "DMX-Steuerung",
+  "Controller und Pulte",
+  "Uplights",
+  "Effektlicht",
+  "Nebel- und Atmosphäreneffekte",
+  "Stative und Traversen",
+  "Kabel, Stromverteilung und Zubehör"
+];
+
+export const partners = [
+  {
+    title: "Locations",
+    text: "Zusammenarbeit mit Eventlocations, Sälen, Gastronomie und privaten Veranstaltungsorten."
+  },
+  {
+    title: "DJs & Musik",
+    text: "Abstimmung von Lichtstimmung, Showmomenten und musikalischen Highlights."
+  },
+  {
+    title: "Eventdienstleister",
+    text: "Koordination mit Technik, Dekoration, Fotografie und Planungspartnern."
   }
 ];
 
 export const stats = [
-  { value: "100%", label: "Responsive" },
-  { value: "Fast", label: "Vercel Ready" },
-  { value: "Dark", label: "Premium Look" }
+  { value: "Event", label: "Lichttechnik" },
+  { value: "Custom", label: "Lichtkonzepte" },
+  { value: "Live", label: "Betreuung" }
 ];
 
-export const navItems = [
-  { label: "Services", href: "#services" },
-  { label: "Prozess", href: "#process" },
-  { label: "Kontakt", href: "#contact" }
-];
-
-export const highlights = [
+export const contactCards = [
   {
-    icon: Sparkles,
-    title: "Grauer Rauch",
-    text: "Subtile Nebelflächen geben dem Hintergrund Tiefe, ohne den Content zu überladen."
+    icon: Mail,
+    title: "Anfrage senden",
+    text: "Schreiben Sie SALight für Ihre Veranstaltung.",
+    href: "mailto:info@sa-light.de?subject=Anfrage%20SALight"
   },
   {
-    icon: Zap,
-    title: "Grüne Akzente",
-    text: "Gezielte Neon-Highlights lenken den Blick auf wichtige Aktionen und Elemente."
+    icon: CalendarCheck,
+    title: "Event planen",
+    text: "Gemeinsam entwickeln wir das passende Lichtkonzept.",
+    href: "mailto:info@sa-light.de?subject=Eventplanung%20SALight"
   },
   {
-    icon: BadgeCheck,
-    title: "Premium Aufbau",
-    text: "Große Typografie, klare Abstände und hochwertige Cards statt Standardtemplate."
-  },
-  {
-    icon: Compass,
-    title: "Klare Führung",
-    text: "Besucher verstehen sofort, was angeboten wird und wie sie Kontakt aufnehmen."
+    icon: Users,
+    title: "Partner werden",
+    text: "Für Locations, DJs und Eventdienstleister.",
+    href: "/partner"
   }
 ];
 
-export const contactOptions = [
-  {
-    icon: MessageCircle,
-    label: "E-Mail",
-    value: "info@sa-light.de",
-    href: "mailto:info@sa-light.de"
-  },
-  {
-    icon: Rocket,
-    label: "Projektstart",
-    value: "Kostenloses Erstgespräch",
-    href: "mailto:info@sa-light.de?subject=Projektanfrage%20SA%20Light"
-  }
+export const heroBadges = [
+  "Lichttechnik",
+  "Atmosphäre",
+  "Eventdesign",
+  "Programmierung"
 ];
+
+export const accentIcon = Sparkles;

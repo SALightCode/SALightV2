@@ -1,23 +1,19 @@
-import Background from "./components/Background.jsx";
-import Header from "./components/Header.jsx";
-import Hero from "./components/Hero.jsx";
-import Services from "./components/Services.jsx";
-import Highlights from "./components/Highlights.jsx";
-import Process from "./components/Process.jsx";
-import Contact from "./components/Contact.jsx";
-import Footer from "./components/Footer.jsx";
+import Home from "./pages/Home.jsx";
+import Leistungen from "./pages/Leistungen.jsx";
+import Geraete from "./pages/Geraete.jsx";
+import Partner from "./pages/Partner.jsx";
+import Impressum from "./pages/Impressum.jsx";
+
+const routes = {
+  "/": Home,
+  "/leistungen": Leistungen,
+  "/geraete": Geraete,
+  "/partner": Partner,
+  "/impressum": Impressum
+};
 
 export default function App() {
-  return (
-    <main>
-      <Background />
-      <Header />
-      <Hero />
-      <Services />
-      <Highlights />
-      <Process />
-      <Contact />
-      <Footer />
-    </main>
-  );
+  const path = window.location.pathname.replace(/\/$/, "") || "/";
+  const Page = routes[path] || Home;
+  return <Page />;
 }

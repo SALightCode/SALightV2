@@ -1,21 +1,27 @@
-# SA Light Premium Website
+# SALight Website v2
 
-Vercel-ready React/Vite Website mit dunklem Premium-Design, grauem Rauch und grünen Akzenten.
+React/Vite Website für SALight — Marwin Sawade.
 
-## Lokaler Start
+## Bilder einfügen
 
-```bash
-npm install
-npm run dev
-```
+Lege deine Dateien in GitHub unter `public/images/` ab:
 
-## Vercel Build Settings
+- `logo.png` = dein Logo
+- `impressum-daten.png` = Bild mit Impressumsdaten
+
+Die Dateinamen müssen exakt stimmen.
+
+## Vercel Settings
 
 - Framework Preset: Vite
 - Build Command: `npm run build`
 - Output Directory: `dist`
 - Install Command: `npm install`
 
-## Wichtige Anpassungen
+## Seiten
 
-In `src/data/siteData.js` kannst du E-Mail, Texte, Navigation, Services und Kontaktoptionen ändern.
+- `/`
+- `/leistungen`
+- `/geraete`
+- `/partner`
+- `/impressum`

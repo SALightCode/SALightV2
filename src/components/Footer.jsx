@@ -1,8 +1,17 @@
+import { navItems } from "../data/siteData.js";
+
 export default function Footer() {
   return (
     <footer className="footer section-shell">
-      <p>© 2026 SA Light. Alle Rechte vorbehalten.</p>
-      <a href="#top">Nach oben</a>
+      <div>
+        <strong>SALight</strong>
+        <p>Marwin Sawade — Lichttechnik & Eventbeleuchtung</p>
+      </div>
+      <nav>
+        {navItems.map((item) => (
+          <a href={item.href} key={item.href}>{item.label}</a>
+        ))}
+      </nav>
     </footer>
   );
 }
