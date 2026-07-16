@@ -7,6 +7,7 @@ import Leistungen from "./pages/Leistungen.jsx";
 import Geraete from "./pages/Geraete.jsx";
 import Partner from "./pages/Partner.jsx";
 import Impressum from "./pages/Impressum.jsx";
+import UeberSALight from "./pages/UeberSALight.jsx";
 
 function PlaceholderPage({ eyebrow, title, description }) {
   return (
@@ -92,10 +93,7 @@ export default function App() {
       <Route path="/impressum" element={<Impressum />} />
 
       {/* Weiterleitungen alter oder englischer URLs */}
-      <Route
-        path="/about"
-        element={<Navigate to="/ueber-salight" replace />}
-      />
+<Route path="/ueber-salight" element={<UeberSALight />} />
 
       <Route
         path="/services"
