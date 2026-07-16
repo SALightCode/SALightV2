@@ -1,87 +1,115 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Sparkles
+} from "lucide-react";
+import { Link } from "react-router-dom";
+
 import PageShell from "../components/PageShell.jsx";
 import ContactBlock from "../components/ContactBlock.jsx";
-import { benefits, heroBadges, stats } from "../data/siteData.js";
+import { benefits } from "../data/siteData.js";
+
+const coreServices = [
+  "Individuelle Lichtkonzepte",
+  "Moderne Lichttechnik",
+  "Programmierung und Steuerung",
+  "Professionelle Betreuung vor Ort"
+];
 
 export default function Home() {
   return (
     <PageShell>
-      <section className="hero section-shell">
+      <section className="hero home-hero section-shell">
         <div className="hero-content">
           <motion.p
             className="eyebrow pill"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65 }}
           >
             <Sparkles size={16} />
-            Willkommen bei SALight — Marwin Sawade
+            SALight — Marwin Sawade
           </motion.p>
 
           <motion.h1
-            initial={{ opacity: 0, y: 34 }}
+            initial={{ opacity: 0, y: 38 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.08 }}
+            transition={{ duration: 0.75, delay: 0.08 }}
           >
-            Lichttechnik für beeindruckende Atmosphären.
+            Wir beleuchten nicht einfach Events.
+            <span className="headline-accent">
+              Wir erschaffen Atmosphäre.
+            </span>
           </motion.h1>
 
           <motion.p
             className="hero-copy"
-            initial={{ opacity: 0, y: 34 }}
+            initial={{ opacity: 0, y: 38 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.16 }}
+            transition={{ duration: 0.75, delay: 0.16 }}
           >
-            Ihr Partner für beeindruckende Lichttechnik und unvergessliche Atmosphären.
-            SALight bietet maßgeschneiderte Lichtlösungen für jede Art von Veranstaltung —
-            von der Gestaltung Ihrer Location bis zur Steuerung und Programmierung
-            komplexer Beleuchtungssysteme.
+            Maßgeschneiderte Lichttechnik für Feiern, Firmenveranstaltungen,
+            Locations und besondere Momente. Von der ersten Idee bis zur
+            programmierten Lichtszene entwickelt SALight Lösungen, die Ihre
+            Veranstaltung sichtbar aufwerten.
           </motion.p>
 
           <motion.div
-            className="hero-actions"
-            initial={{ opacity: 0, y: 34 }}
+            className="hero-actions hero-main-actions"
+            initial={{ opacity: 0, y: 38 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.24 }}
+            transition={{ duration: 0.75, delay: 0.24 }}
           >
-            <a className="btn btn-primary" href="mailto:info@sa-light.de?subject=Anfrage%20SALight">
-              Event anfragen <ArrowRight size={18} />
-            </a>
-            <a className="btn btn-secondary" href="/leistungen">
-              Leistungen ansehen
-            </a>
+            <Link className="btn btn-primary btn-large" to="/eventanfragen">
+              Event anfragen
+              <ArrowRight size={20} />
+            </Link>
+
+            <Link className="btn btn-secondary btn-large" to="/ueber-salight">
+              Über SALight
+            </Link>
           </motion.div>
 
-          <div className="badge-row">
-            {heroBadges.map((badge) => <span key={badge}>{badge}</span>)}
-          </div>
+          <motion.div
+            className="hero-service-list"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            {coreServices.map((service) => (
+              <div key={service}>
+                <CheckCircle2 size={18} />
+                <span>{service}</span>
+              </div>
+            ))}
+          </motion.div>
         </div>
 
         <motion.div
-          className="hero-panel glass"
-          initial={{ opacity: 0, scale: 0.94, y: 28 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ delay: 0.18 }}
+          className="hero-stage"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, delay: 0.18 }}
         >
-          <div className="panel-top"><span /><span /><span /></div>
-          <div className="panel-glow" />
-          <div className="metric">
-            <strong>SALight</strong>
-            <span>Lichttechnik & Eventbeleuchtung</span>
-          </div>
-          <div className="preview-card large">
-            <span>Fokus</span>
-            <strong>Location, Stimmung und Show im perfekten Licht.</strong>
-          </div>
-          <div className="preview-grid">
-            <div className="preview-card">
-              <span>Look</span>
-              <strong>Dark / Smoke</strong>
-            </div>
-            <div className="preview-card">
-              <span>Accent</span>
-              <strong>Green Light</strong>
-            </div>
+          <div className="light-source" />
+          <div className="light-beam beam-left" />
+          <div className="light-beam beam-center" />
+          <div className="light-beam beam-right" />
+
+          <div className="stage-smoke stage-smoke-one" />
+          <div className="stage-smoke stage-smoke-two" />
+
+          <div className="stage-content glass">
+            <span className="stage-label">SALight</span>
+
+            <strong>
+              Lichttechnik, die Räume verändert und Momente inszeniert.
+            </strong>
+
+            <p>
+              Planung · Technik · Programmierung · Betreuung
+            </p>
           </div>
         </motion.div>
       </section>
@@ -89,39 +117,39 @@ export default function Home() {
       <section className="section-shell section-spacing">
         <div className="section-heading">
           <p className="eyebrow">Warum SALight?</p>
-          <h2>Lichtlösungen, die genau zu Ihrer Veranstaltung passen.</h2>
+
+          <h2>
+            Persönliche Planung und Lichtlösungen, die zu Ihrem Event passen.
+          </h2>
+
           <p>
-            Lassen Sie uns gemeinsam Ihre Feier ins perfekte Licht setzen.
+            SALight verbindet technische Kompetenz mit einem klaren Gespür für
+            Raum, Stimmung und Wirkung.
           </p>
         </div>
 
         <div className="service-grid">
           {benefits.map((item, index) => {
             const Icon = item.icon;
+
             return (
               <motion.article
                 className="service-card glass"
                 key={item.title}
                 initial={{ opacity: 0, y: 42 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.6, delay: index * 0.08 }}
               >
-                <div className="icon-box"><Icon size={28} /></div>
+                <div className="icon-box">
+                  <Icon size={28} />
+                </div>
+
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </motion.article>
             );
           })}
-        </div>
-
-        <div className="stats-bar glass">
-          {stats.map((stat) => (
-            <div key={stat.label}>
-              <strong>{stat.value}</strong>
-              <span>{stat.label}</span>
-            </div>
-          ))}
         </div>
       </section>
 
