@@ -14,9 +14,10 @@ import {
 } from "lucide-react";
 
 export const navItems = [
-  { label: "Start", href: "/" },
+  { label: "Über SALight", href: "/ueber-salight" },
   { label: "Leistungen", href: "/leistungen" },
-  { label: "Geräte", href: "/geraete" },
+  { label: "Equipment", href: "/equipment" },
+  { label: "Referenzen", href: "/referenzen" },
   { label: "Partner", href: "/partner" },
   { label: "Impressum", href: "/impressum" }
 ];
