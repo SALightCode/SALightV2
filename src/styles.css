@@ -12,6 +12,7 @@
   --max: 1200px;
 }
 
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; background: var(--bg); }
 body {
