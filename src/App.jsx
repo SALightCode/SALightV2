@@ -50,18 +50,7 @@ export default function App() {
     <Routes>
       {/* Hauptseiten */}
       <Route path="/" element={<Home />} />
-
-      <Route
-        path="/ueber-salight"
-        element={
-          <PlaceholderPage
-            eyebrow="Über SALight"
-            title="Lichttechnik mit Persönlichkeit und Leidenschaft."
-            description="Auf dieser Seite entsteht die ausführliche Vorstellung von SALight und Marwin Sawade. Hier werden später Ihre Geschichte, Arbeitsweise, Erfahrung und persönliche Bilder eingebunden."
-          />
-        }
-      />
-
+      <Route path="/ueber-salight" element={<UeberSALight />} />
       <Route path="/leistungen" element={<Leistungen />} />
 
       <Route path="/equipment" element={<Geraete />} />
@@ -93,7 +82,6 @@ export default function App() {
       <Route path="/impressum" element={<Impressum />} />
 
       {/* Weiterleitungen alter oder englischer URLs */}
-<Route path="/ueber-salight" element={<UeberSALight />} />
 
       <Route
         path="/services"
