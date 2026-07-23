@@ -195,11 +195,66 @@ export default function Geraete() {
             <p>{category.text}</p>
           </motion.div>
 
-<div
-  className={`equipment-grid ${
-    category.items.length === 1 ? "equipment-grid-single" : ""
-  }`}
->
+<div className="equipment-list">
+  {category.items.map((item, itemIndex) => {
+    const Icon = item.icon;
+    const isReversed = itemIndex % 2 !== 0;
+
+    return (
+      <motion.article
+        className={`equipment-card equipment-card-horizontal glass ${
+          isReversed ? "equipment-card-reversed" : ""
+        }`}
+        key={item.name}
+        initial={{ opacity: 0, y: 44 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-70px" }}
+        transition={{
+          duration: 0.65,
+          delay: itemIndex * 0.06
+        }}
+      >
+        <div className="equipment-card-image">
+          <img src={item.image} alt={item.alt} loading="lazy" />
+
+          <div className="equipment-image-glow" />
+
+          <div className="equipment-availability">
+            <span>Bestand</span>
+            <strong>{item.quantity}× vorhanden</strong>
+          </div>
+        </div>
+
+        <div className="equipment-card-content">
+          <div className="equipment-card-heading">
+            <div className="equipment-card-icon">
+              <Icon size={23} />
+            </div>
+
+            <span>
+              {String(categoryIndex + 1).padStart(2, "0")}.
+              {String(itemIndex + 1).padStart(2, "0")}
+            </span>
+          </div>
+
+          <div className="equipment-card-copy">
+            <p className="equipment-card-kicker">{category.title}</p>
+
+            <h3>{item.name}</h3>
+
+            <p>{item.description}</p>
+          </div>
+
+          <div className="equipment-features">
+            {item.features.map((feature) => (
+              <span key={feature}>{feature}</span>
+            ))}
+          </div>
+        </div>
+      </motion.article>
+    );
+  })}
+</div>
   {category.items.map((item, itemIndex) => {
     const Icon = item.icon;
 
