@@ -195,11 +195,18 @@ export default function Geraete() {
             <p>{category.text}</p>
           </motion.div>
 
-          <div
-            className={`equipment-grid ${
-              category.items.length === 1 ? "equipment-grid-single" : ""
-            }`}
-          >
+<div
+  className={`equipment-grid ${
+    category.items.length === 1 ? "equipment-grid-single" : ""
+  }`}
+>
+  {category.items.map((item, itemIndex) => {
+    const Icon = item.icon;
+
+    return (
+      <motion.article
+        className="equipment-card glass"
+        
             {category.items.map((item, itemIndex) => {
               const Icon = item.icon;
 
