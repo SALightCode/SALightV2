@@ -88,7 +88,12 @@ const categories = [
         icon: Boxes,
         description:
           "Das LED Flood Panel ermöglicht eine breite und gleichmäßige Ausleuchtung. Es eignet sich für Bühnen, Hintergründe, Wände und dekorative Flächen und bildet eine vielseitige Grundlage für die visuelle Gestaltung.",
-        features: ["Flächenlicht", "RGB", "Breiter Abstrahlwinkel", "DMX"]
+        features: [
+          "Flächenlicht",
+          "RGB",
+          "Breiter Abstrahlwinkel",
+          "DMX"
+        ]
       },
       {
         name: "LED PAR",
@@ -170,6 +175,7 @@ export default function Geraete() {
 
           <div className="equipment-hero-label">
             <span>SALight Equipment</span>
+
             <strong>
               Bewegtes Licht, LED-Technik und Effekte aus einer Hand.
             </strong>
@@ -195,90 +201,33 @@ export default function Geraete() {
             <p>{category.text}</p>
           </motion.div>
 
-<div className="equipment-list">
-  {category.items.map((item, itemIndex) => {
-    const Icon = item.icon;
-    const isReversed = itemIndex % 2 !== 0;
-
-    return (
-      <motion.article
-        className={`equipment-card equipment-card-horizontal glass ${
-          isReversed ? "equipment-card-reversed" : ""
-        }`}
-        key={item.name}
-        initial={{ opacity: 0, y: 44 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-70px" }}
-        transition={{
-          duration: 0.65,
-          delay: itemIndex * 0.06
-        }}
-      >
-        <div className="equipment-card-image">
-          <img src={item.image} alt={item.alt} loading="lazy" />
-
-          <div className="equipment-image-glow" />
-
-          <div className="equipment-availability">
-            <span>Bestand</span>
-            <strong>{item.quantity}× vorhanden</strong>
-          </div>
-        </div>
-
-        <div className="equipment-card-content">
-          <div className="equipment-card-heading">
-            <div className="equipment-card-icon">
-              <Icon size={23} />
-            </div>
-
-            <span>
-              {String(categoryIndex + 1).padStart(2, "0")}.
-              {String(itemIndex + 1).padStart(2, "0")}
-            </span>
-          </div>
-
-          <div className="equipment-card-copy">
-            <p className="equipment-card-kicker">{category.title}</p>
-
-            <h3>{item.name}</h3>
-
-            <p>{item.description}</p>
-          </div>
-
-          <div className="equipment-features">
-            {item.features.map((feature) => (
-              <span key={feature}>{feature}</span>
-            ))}
-          </div>
-        </div>
-      </motion.article>
-    );
-  })}
-</div>
-  {category.items.map((item, itemIndex) => {
-    const Icon = item.icon;
-
-    return (
-      <motion.article
-        className="equipment-card glass"
-        
+          <div className="equipment-list">
             {category.items.map((item, itemIndex) => {
               const Icon = item.icon;
+              const isReversed = itemIndex % 2 !== 0;
 
               return (
                 <motion.article
-                  className="equipment-card glass"
+                  className={`equipment-card equipment-card-horizontal glass ${
+                    isReversed ? "equipment-card-reversed" : ""
+                  }`}
                   key={item.name}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 44 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-70px" }}
                   transition={{
-                    duration: 0.6,
-                    delay: itemIndex * 0.08
+                    duration: 0.65,
+                    delay: itemIndex * 0.06
                   }}
                 >
                   <div className="equipment-card-image">
-                    <img src={item.image} alt={item.alt} />
+                    <img
+                      src={item.image}
+                      alt={item.alt}
+                      loading="lazy"
+                    />
+
+                    <div className="equipment-image-glow" />
 
                     <div className="equipment-availability">
                       <span>Bestand</span>
@@ -289,7 +238,7 @@ export default function Geraete() {
                   <div className="equipment-card-content">
                     <div className="equipment-card-heading">
                       <div className="equipment-card-icon">
-                        <Icon size={22} />
+                        <Icon size={23} />
                       </div>
 
                       <span>
@@ -298,8 +247,15 @@ export default function Geraete() {
                       </span>
                     </div>
 
-                    <h3>{item.name}</h3>
-                    <p>{item.description}</p>
+                    <div className="equipment-card-copy">
+                      <p className="equipment-card-kicker">
+                        {category.title}
+                      </p>
+
+                      <h3>{item.name}</h3>
+
+                      <p>{item.description}</p>
+                    </div>
 
                     <div className="equipment-features">
                       {item.features.map((feature) => (
@@ -346,7 +302,9 @@ export default function Geraete() {
         >
           <p className="eyebrow">Persönliche Beratung</p>
 
-          <h2>Sie sind unsicher, welche Technik zu Ihrem Event passt?</h2>
+          <h2>
+            Sie sind unsicher, welche Technik zu Ihrem Event passt?
+          </h2>
 
           <p>
             SALight stellt die Technik passend zu Location, Gästezahl,
@@ -354,7 +312,10 @@ export default function Geraete() {
           </p>
 
           <div className="hero-actions services-cta-actions">
-            <Link className="btn btn-primary btn-large" to="/eventanfragen">
+            <Link
+              className="btn btn-primary btn-large"
+              to="/eventanfragen"
+            >
               Event anfragen
               <ArrowRight size={20} />
             </Link>
@@ -364,5 +325,3 @@ export default function Geraete() {
     </PageShell>
   );
 }
-
-          
