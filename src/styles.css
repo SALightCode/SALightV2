@@ -1367,4 +1367,35 @@ main { position: relative; min-height: 100vh; isolation: isolate; }
 .process-note {
   flex-direction: column;
 }
+  .equipment-hero {
+  grid-template-columns: 1fr;
+}
+
+.equipment-hero-visual,
+.equipment-hero-visual img {
+  min-height: 0;
+  height: 440px;
+}
+
+.equipment-grid,
+.equipment-grid-single {
+  grid-template-columns: 1fr;
+}
+
+.equipment-card-image {
+  height: 310px;
+}
+
+.equipment-card-content {
+  padding: 25px 22px 29px;
+}
+
+.equipment-availability {
+  right: 14px;
+  bottom: 14px;
+}
+
+.equipment-philosophy {
+  padding: 38px 23px;
+}
 }
