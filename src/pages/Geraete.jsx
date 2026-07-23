@@ -1,254 +1,304 @@
-.equipment-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(380px, 1.05fr);
-  gap: 58px;
-  align-items: center;
-}
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  Boxes,
+  Gauge,
+  Lightbulb,
+  Move,
+  Sparkles,
+  Waves,
+  Zap
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
-.equipment-hero-visual {
-  position: relative;
-  min-height: 560px;
-  overflow: hidden;
-  border-radius: 38px;
-}
+import PageShell from "../components/PageShell.jsx";
 
-.equipment-hero-visual img {
-  display: block;
-  width: 100%;
-  height: 560px;
-  object-fit: cover;
-}
+const categories = [
+  {
+    id: "moving-heads",
+    eyebrow: "Bewegtes Licht",
+    title: "Moving Heads",
+    text:
+      "Bewegtes Licht sorgt für Dynamik, Tiefe und eindrucksvolle Effekte. Je nach Veranstaltung kommen Spot-, Wash- oder Beam-Systeme zum Einsatz.",
+    items: [
+      {
+        name: "Moving-Head Spot 90 W",
+        image: "/images/equipment/moving-head-spot-90w.jpg",
+        alt: "Moving-Head Spot mit 90 Watt",
+        quantity: 4,
+        icon: Move,
+        description:
+          "Der kompakte Moving Head erzeugt klar definierte Lichtstrahlen und eignet sich für unterschiedlichste Veranstaltungsgrößen. Mit Gobos, Prisma und bewegten Positionen lassen sich dynamische Lichtbilder und gezielte Akzente realisieren.",
+        features: ["Spot", "Gobos", "Prisma", "DMX"]
+      },
+      {
+        name: "Moving-Head Zoom/Wash",
+        image: "/images/equipment/moving-head-zoom-wash.jpg",
+        alt: "Moving-Head mit Zoom und Wash-Funktion",
+        quantity: 4,
+        icon: Waves,
+        description:
+          "Durch den variablen Zoom lässt sich der Lichtkegel flexibel von schmal und konzentriert bis breit und flächig einstellen. Das Gerät eignet sich besonders für Livebands, Bühnenflächen und stimmungsvolle Raumbeleuchtung.",
+        features: ["Wash", "Zoom", "RGBW", "DMX"]
+      },
+      {
+        name: "Moving-Head Spot 60 W",
+        image: "/images/equipment/moving-head-spot-60w.jpg",
+        alt: "Kompakter Moving-Head Spot mit 60 Watt",
+        quantity: 2,
+        icon: Lightbulb,
+        description:
+          "Durch seine kompakte Bauform eignet sich dieser Moving Head besonders für kleinere Locations und private Feiern. Trotz der geringen Größe ermöglicht er bewegte Lichtbilder und gezielte Effekte auf begrenztem Raum.",
+        features: ["Spot", "Kompakt", "Gobos", "DMX"]
+      },
+      {
+        name: "Moving-Head Beam 100 W",
+        image: "/images/equipment/moving-head-beam-100w.jpg",
+        alt: "Moving-Head Beam mit 100 Watt",
+        quantity: 2,
+        icon: Zap,
+        description:
+          "Der Moving Head erzeugt einen schmalen und gebündelten Lichtstrahl mit hoher visueller Wirkung. In Verbindung mit Nebel oder Haze entstehen markante Beam-Effekte für Partys, Konzerte und mittelgroße Veranstaltungen.",
+        features: ["Beam", "Prisma", "Scharfer Strahl", "DMX"]
+      }
+    ]
+  },
+  {
+    id: "led-technik",
+    eyebrow: "Fläche und Atmosphäre",
+    title: "LED-Technik",
+    text:
+      "Moderne LED-Technik schafft Atmosphäre, setzt Räume in Szene und ermöglicht eine gleichmäßige Ausleuchtung von Bühnen, Tanzflächen und Veranstaltungsräumen.",
+    items: [
+      {
+        name: "RGB Pixel-Bar",
+        image: "/images/equipment/rgb-pixel-bar.jpg",
+        alt: "RGB Pixel-Bar für dynamische Lichteffekte",
+        quantity: 4,
+        icon: Gauge,
+        description:
+          "Die RGB Pixel-Bar eignet sich für farbige Flächen, Lauflichteffekte und dynamische Pixelanimationen. Sie kann als dekoratives Element, zur Hintergrundbeleuchtung oder als sichtbarer Showeffekt eingesetzt werden.",
+        features: ["RGB", "Pixelsteuerung", "Lauflicht", "DMX"]
+      },
+      {
+        name: "LED Flood Panel",
+        image: "/images/equipment/led-flood-panel.jpg",
+        alt: "LED Flood Panel für breite Ausleuchtung",
+        quantity: 4,
+        icon: Boxes,
+        description:
+          "Das LED Flood Panel ermöglicht eine breite und gleichmäßige Ausleuchtung. Es eignet sich für Bühnen, Hintergründe, Wände und dekorative Flächen und bildet eine vielseitige Grundlage für die visuelle Gestaltung.",
+        features: ["Flächenlicht", "RGB", "Breiter Abstrahlwinkel", "DMX"]
+      },
+      {
+        name: "LED PAR",
+        image: "/images/equipment/led-par.jpg",
+        alt: "LED PAR Scheinwerfer für Ambientebeleuchtung",
+        quantity: 8,
+        icon: Sparkles,
+        description:
+          "Die LED PARs können flexibel für Flächen-, Objekt- und Ambientebeleuchtung eingesetzt werden. Neben kräftigen RGB-Farben stehen je nach Gerät auch UV, Amber sowie warmes und kaltes Weiß zur Verfügung.",
+        features: ["RGB", "UV", "Amber", "Weiß"]
+      }
+    ]
+  },
+  {
+    id: "effekttechnik",
+    eyebrow: "Sichtbare Wirkung",
+    title: "Effekttechnik",
+    text:
+      "Nebel und Spezialeffekte machen Licht sichtbar und verleihen Lichtshows zusätzliche Tiefe. Sie werden gezielt und passend zur jeweiligen Location eingesetzt.",
+    items: [
+      {
+        name: "Senkrechte Nebelmaschine",
+        image: "/images/equipment/nebelmaschine-vertikal.jpg",
+        alt: "Senkrechte Nebelmaschine mit kräftigem Ausstoß",
+        quantity: 1,
+        icon: Waves,
+        description:
+          "Die Nebelmaschine erzeugt einen kräftigen senkrechten Ausstoß und simuliert damit einen CO₂-ähnlichen Effekt. Je nach Anwendung kann sie stehend oder hängend montiert werden.",
+        features: [
+          "Vertikaler Ausstoß",
+          "CO₂-Look",
+          "DMX",
+          "Flexible Montage"
+        ]
+      }
+    ]
+  }
+];
 
-.equipment-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.04) 35%,
-      rgba(0, 0, 0, 0.82) 100%
-    ),
-    radial-gradient(
-      circle at 70% 25%,
-      rgba(0, 255, 136, 0.16),
-      transparent 42%
-    );
-}
+export default function Geraete() {
+  return (
+    <PageShell>
+      <section className="page-hero section-shell equipment-hero">
+        <motion.div
+          className="equipment-hero-copy"
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65 }}
+        >
+          <p className="eyebrow">Verfügbares Equipment</p>
 
-.equipment-hero-label {
-  position: absolute;
-  left: 28px;
-  right: 28px;
-  bottom: 28px;
-  z-index: 2;
-  padding: 26px;
-  border: 1px solid var(--line);
-  border-radius: 26px;
-  background: rgba(5, 5, 5, 0.68);
-  backdrop-filter: blur(18px);
-}
+          <h1>
+            Technik, die Wirkung erzeugt.
+            <span className="headline-accent">
+              Passend ausgewählt für Ihr Event.
+            </span>
+          </h1>
 
-.equipment-hero-label span {
-  display: block;
-  margin-bottom: 10px;
-  color: var(--green);
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.17em;
-  text-transform: uppercase;
-}
+          <p>
+            Hochwertige Licht- und Effekttechnik für private Feiern,
+            Konzerte und professionelle Veranstaltungen. Das Equipment wird
+            regelmäßig erweitert und individuell auf die Anforderungen Ihrer
+            Veranstaltung abgestimmt.
+          </p>
+        </motion.div>
 
-.equipment-hero-label strong {
-  display: block;
-  max-width: 620px;
-  font-size: clamp(23px, 3vw, 36px);
-  line-height: 1.08;
-  letter-spacing: -0.05em;
-}
+        <motion.div
+          className="equipment-hero-visual glass"
+          initial={{ opacity: 0, scale: 0.96, y: 24 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.12 }}
+        >
+          <img
+            src="/images/equipment/equipment-hero.jpg"
+            alt="Professionelle Lichttechnik von SALight"
+          />
 
-.equipment-category {
-  scroll-margin-top: 120px;
-}
+          <div className="equipment-hero-overlay" />
 
-.equipment-category-heading {
-  max-width: 820px;
-}
+          <div className="equipment-hero-label">
+            <span>SALight Equipment</span>
+            <strong>
+              Bewegtes Licht, LED-Technik und Effekte aus einer Hand.
+            </strong>
+          </div>
+        </motion.div>
+      </section>
 
-.equipment-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-}
+      {categories.map((category, categoryIndex) => (
+        <section
+          className="section-shell section-spacing equipment-category"
+          id={category.id}
+          key={category.id}
+        >
+          <motion.div
+            className="section-heading equipment-category-heading"
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="eyebrow">{category.eyebrow}</p>
+            <h2>{category.title}</h2>
+            <p>{category.text}</p>
+          </motion.div>
 
-.equipment-grid-single {
-  grid-template-columns: minmax(0, 760px);
-}
+          <div
+            className={`equipment-grid ${
+              category.items.length === 1 ? "equipment-grid-single" : ""
+            }`}
+          >
+            {category.items.map((item, itemIndex) => {
+              const Icon = item.icon;
 
-.equipment-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 32px;
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
-}
+              return (
+                <motion.article
+                  className="equipment-card glass"
+                  key={item.name}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-70px" }}
+                  transition={{
+                    duration: 0.6,
+                    delay: itemIndex * 0.08
+                  }}
+                >
+                  <div className="equipment-card-image">
+                    <img src={item.image} alt={item.alt} />
 
-.equipment-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(0, 255, 136, 0.32);
-  box-shadow:
-    0 24px 70px rgba(0, 0, 0, 0.35),
-    0 0 44px rgba(0, 255, 136, 0.07);
-}
+                    <div className="equipment-availability">
+                      <span>Bestand</span>
+                      <strong>{item.quantity}× vorhanden</strong>
+                    </div>
+                  </div>
 
-.equipment-card-image {
-  position: relative;
-  height: 360px;
-  overflow: hidden;
-  background: #0d0d0d;
-}
+                  <div className="equipment-card-content">
+                    <div className="equipment-card-heading">
+                      <div className="equipment-card-icon">
+                        <Icon size={22} />
+                      </div>
 
-.equipment-card-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      transparent 45%,
-      rgba(4, 4, 4, 0.75) 100%
-    );
-  pointer-events: none;
-}
+                      <span>
+                        {String(categoryIndex + 1).padStart(2, "0")}.
+                        {String(itemIndex + 1).padStart(2, "0")}
+                      </span>
+                    </div>
 
-.equipment-card-image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.55s ease;
-}
+                    <h3>{item.name}</h3>
+                    <p>{item.description}</p>
 
-.equipment-card:hover .equipment-card-image img {
-  transform: scale(1.04);
-}
+                    <div className="equipment-features">
+                      {item.features.map((feature) => (
+                        <span key={feature}>{feature}</span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.article>
+              );
+            })}
+          </div>
+        </section>
+      ))}
 
-.equipment-availability {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  z-index: 2;
-  min-width: 132px;
-  padding: 13px 16px;
-  border: 1px solid rgba(0, 255, 136, 0.22);
-  border-radius: 18px;
-  background: rgba(5, 5, 5, 0.76);
-  backdrop-filter: blur(16px);
-}
+      <section className="section-shell section-spacing">
+        <motion.div
+          className="equipment-philosophy glass"
+          initial={{ opacity: 0, y: 34 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.68 }}
+        >
+          <p className="eyebrow">Individuelle Zusammenstellung</p>
 
-.equipment-availability span {
-  display: block;
-  margin-bottom: 4px;
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
+          <h2>Das passende Equipment für jedes Event.</h2>
 
-.equipment-availability strong {
-  display: block;
-  color: var(--green);
-  font-size: 15px;
-}
+          <p>
+            Nicht jede Veranstaltung benötigt möglichst viel Technik.
+            Gemeinsam wählen wir genau die Komponenten aus, die zu Ihrer
+            Location, Ihrem Budget und der gewünschten Atmosphäre passen.
+            So entsteht ein stimmiges Gesamtkonzept – effizient,
+            professionell und ohne unnötige Technik.
+          </p>
+        </motion.div>
+      </section>
 
-.equipment-card-content {
-  padding: 30px;
-}
+      <section className="section-shell section-spacing">
+        <motion.div
+          className="contact-card glass"
+          initial={{ opacity: 0, y: 36 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <p className="eyebrow">Persönliche Beratung</p>
 
-.equipment-card-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
-}
+          <h2>Sie sind unsicher, welche Technik zu Ihrem Event passt?</h2>
 
-.equipment-card-heading > span {
-  color: rgba(255, 255, 255, 0.26);
-  font-size: 14px;
-  font-weight: 850;
-  letter-spacing: 0.08em;
-}
+          <p>
+            SALight stellt die Technik passend zu Location, Gästezahl,
+            Veranstaltungsart und gewünschter Atmosphäre zusammen.
+          </p>
 
-.equipment-card-icon {
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  border: 1px solid rgba(0, 255, 136, 0.23);
-  border-radius: 16px;
-  color: var(--green);
-  background: rgba(0, 255, 136, 0.08);
-}
-
-.equipment-card h3 {
-  margin: 0 0 16px;
-  font-size: clamp(28px, 3vw, 39px);
-  line-height: 1.02;
-  letter-spacing: -0.05em;
-}
-
-.equipment-card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.72;
-}
-
-.equipment-features {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-top: 24px;
-}
-
-.equipment-features span {
-  padding: 9px 13px;
-  border: 1px solid rgba(255, 255, 255, 0.085);
-  border-radius: 999px;
-  color: rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.035);
-  font-size: 12px;
-  font-weight: 750;
-}
-
-.equipment-philosophy {
-  position: relative;
-  overflow: hidden;
-  max-width: 980px;
-  margin: 0 auto;
-  padding: clamp(36px, 7vw, 82px);
-  border-radius: 36px;
-  text-align: center;
-  background:
-    radial-gradient(
-      circle at 50% 0,
-      rgba(0, 255, 136, 0.13),
-      transparent 48%
-    ),
-    rgba(255, 255, 255, 0.025);
-}
-
-.equipment-philosophy h2 {
-  max-width: 760px;
-  margin: 0 auto 22px;
-}
-
-.equipment-philosophy > p:last-child {
-  max-width: 760px;
-  margin: 0 auto;
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 1.75;
+          <div className="hero-actions services-cta-actions">
+            <Link className="btn btn-primary btn-large" to="/eventanfragen">
+              Event anfragen
+              <ArrowRight size={20} />
+            </Link>
+          </div>
+        </motion.div>
+      </section>
+    </PageShell>
+  );
 }
