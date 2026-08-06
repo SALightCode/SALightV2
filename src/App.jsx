@@ -67,17 +67,6 @@ export default function App() {
         }
       />
 
-      <Route
-        path="/referenzen"
-        element={
-          <PlaceholderPage
-            eyebrow="Referenzen"
-            title="Veranstaltungen, Lichtkonzepte und besondere Momente."
-            description="Auf dieser Seite werden später Bilder und Informationen zu ausgewählten Veranstaltungen und umgesetzten Lichtkonzepten präsentiert."
-          />
-        }
-      />
-
       <Route path="/partner" element={<Partner />} />
 
       <Route path="/impressum" element={<Impressum />} />
