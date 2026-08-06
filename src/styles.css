@@ -2546,3 +2546,46 @@ main { position: relative; min-height: 100vh; isolation: isolate; }
     font-size: 13px;
   }
 }
+
+@media (max-width: 760px) {
+
+  .references-hero,
+  .project-section,
+  .project-section-reverse,
+  .working-methods {
+    grid-template-columns: 1fr;
+  }
+
+  .project-section-reverse .project-image,
+  .project-section-reverse .project-content {
+    order: initial;
+  }
+
+  .project-image,
+  .project-image img {
+    height: 380px;
+    min-height: 380px;
+  }
+
+  .project-content {
+    padding: 32px 24px;
+  }
+
+  .project-boxes {
+    grid-template-columns: 1fr;
+  }
+
+  .software-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .references-hero-visual {
+    min-height: 440px;
+  }
+
+  .working-methods {
+    gap: 34px;
+    padding: 34px 24px;
+  }
+
+}
