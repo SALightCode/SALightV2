@@ -59,12 +59,12 @@ export const projectCategories = [
     alt: "Theaterbeleuchtung und Showproduktion von SALight",
 
     description:
-      "Hier kannst du später deinen eigenen Text eintragen. Beschreibe zum Beispiel die Zusammenarbeit mit Regie und Darstellern, die Erstellung von Lichtstimmungen, Cue-Listen, Proben und die Durchführung der Vorstellung.",
+      "Ob Theateraufführung, Musical, Tanzshow oder aufwendige Bühnenproduktion – jede Inszenierung erzählt ihre eigene Geschichte. Mit durchdachten Lichtkonzepten, präziser Showsteuerung und abgestimmter Veranstaltungstechnik sorgen wir dafür, dass diese Geschichte auch technisch perfekt in Szene gesetzt wird. Licht ist für uns mehr als nur Beleuchtung. Es schafft Atmosphäre, lenkt den Blick des Publikums und unterstreicht die Emotionen auf der Bühne. Von sanften Stimmungswechseln über dynamische Effekte bis hin zu komplex programmierten Lichtabläufen entwickeln wir individuelle Lösungen, die sich harmonisch in die Inszenierung einfügen. Dabei setzen wir auf moderne Lichtsteuerung, zeitgenaue Abläufe und bei Bedarf auf die Integration von Video- und Medientechnik. In enger Zusammenarbeit mit Regie, Darstellern und Veranstaltern begleiten wir Produktionen von der technischen Planung über die Proben bis zur finalen Aufführung.",
 
     services: [
       "Szenisches Lichtkonzept",
-      "Programmierung von Cue-Listen",
-      "Technische Proben",
+      "Programmierung von Cue und Timecode",
+      "Proben mit Künstern",
       "Zusammenarbeit mit Regie",
       "Durchführung der Vorstellung"
     ],
@@ -73,7 +73,8 @@ export const projectCategories = [
       "grandMA3",
       "LED- und Profilscheinwerfer",
       "Moving Heads",
-      "DMX-Netzwerk"
+      "Wash-Light",
+      "Art-Net"
     ]
   },
 
@@ -85,7 +86,7 @@ export const projectCategories = [
     alt: "Konzert- und Bühnenbeleuchtung von SALight",
 
     description:
-      "Hier kannst du später deinen eigenen Text eintragen. Beschreibe zum Beispiel die Lichtsteuerung für Livebands, Busking, vorbereitete Showsequenzen, Bühnenaufbau und die Anpassung der Beleuchtung an Musik und Performance.",
+      "Wenn Sound, Licht und Leidenschaft aufeinandertreffen. Ob Clubkonzert, Open-Air-Festival oder große Live-Bühne – wir sorgen dafür, dass jede Performance zum Erlebnis wird. Mit professioneller Licht- und Veranstaltungstechnik, kreativen Lichtdesigns und dynamischen Showeffekten setzen wir Künstler, Bands und Bühnen eindrucksvoll in Szene. Von atmosphärischen Looks bis hin zu energiegeladenen, taktsynchronen Lichtshows entwickeln wir individuelle Konzepte, die perfekt auf Musik, Künstler und Veranstaltung abgestimmt sind. Dabei verbinden wir technisches Know-how mit einem Gespür für Timing, Dynamik und Emotionen. Ob vorprogrammierte Showabläufe, Timecode-gesteuerte Effekte oder spontane Live-Steuerung – wir reagieren flexibel auf das Geschehen auf der Bühne und schaffen einzigartige Momente für Künstler und Publikum. Von der ersten Planung über den Aufbau bis zum letzten Song stehen wir für zuverlässige Technik und eine professionelle Umsetzung.",
 
     services: [
       "Live-Lichtsteuerung",
@@ -99,6 +100,7 @@ export const projectCategories = [
       "grandMA3",
       "Moving Heads",
       "LED Bars",
+      "Showlaser",
       "Nebel und Haze"
     ]
   },
@@ -111,19 +113,19 @@ export const projectCategories = [
     alt: "Beleuchtung einer professionellen Bühnenveranstaltung",
 
     description:
-      "Hier kannst du später deinen eigenen Text eintragen. Beschreibe zum Beispiel Firmenfeiern, Jubiläen, Präsentationen, Stadtfeste oder mehrtägige Veranstaltungen und welche Aufgaben SALight dabei übernimmt.",
+      "Professionelle Technik für einen Auftritt, der Eindruck hinterlässt. Ob Firmenfeier, Produktpräsentation, Jubiläum, Messeauftritt oder Bühnenevent – wir schaffen mit moderner Veranstaltungstechnik den passenden Rahmen für einen gelungenen Auftritt. Mit individuellen Lichtkonzepten, professioneller Beschallung und abgestimmter Medientechnik setzen wir Unternehmen, Marken und Menschen wirkungsvoll in Szene. Dabei steht nicht nur die Technik im Mittelpunkt, sondern vor allem die Botschaft, die beim Publikum ankommen soll. Von einer dezenten, stilvollen Ambientebeleuchtung bis hin zu eindrucksvollen Showmomenten entwickeln wir Lösungen, die sich an den Anforderungen und dem Charakter Ihrer Veranstaltung orientieren. Durch sorgfältige Planung, zuverlässige Technik und präzise abgestimmte Abläufe sorgen wir für einen reibungslosen Veranstaltungsverlauf. Ob einzelne technische Komponenten oder die umfassende Betreuung Ihres Events – wir stehen Ihnen von der ersten Idee bis zur erfolgreichen Umsetzung als kompetenter Partner zur Seite.",
 
     services: [
       "Technische Planung",
       "Bühnen- und Raumbeleuchtung",
-      "Programmierung",
       "Aufbau und Betreuung",
-      "Abstimmung mit weiteren Gewerken"
+      "Abstimmung mit weiteren Gewerken",
+      "Fester Ansprechpartner"
     ],
 
     technology: [
-      "grandMA3",
-      "Netzwerk- und DMX-Technik",
+      "Daslight / MA3onPC",
+      "DMX-Technik",
       "Moving Heads",
       "LED- und Effekttechnik"
     ]
