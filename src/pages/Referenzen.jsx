@@ -66,12 +66,7 @@ export default function Referenzen() {
           <h2>
             Unterschiedliche Veranstaltungen. Ein gemeinsamer Anspruch.
           </h2>
-
-          <p>
-            Die folgenden Bereiche zeigen, wie vielseitig Lichttechnik
-            eingesetzt werden kann. Die Texte und Bilder kannst du später
-            direkt in der Datei <code>src/data/projects.js</code> anpassen.
-          </p>
+         </p>
         </div>
 
         <div className="projects-list">
