@@ -66,7 +66,6 @@ export default function Referenzen() {
           <h2>
             Unterschiedliche Veranstaltungen. Ein gemeinsamer Anspruch.
           </h2>
-         </p>
         </div>
 
         <div className="projects-list">
