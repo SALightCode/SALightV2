@@ -7,7 +7,7 @@ export const projectCategories = [
     alt: "Beleuchtete Gartenparty von SALight",
 
     description:
-      "Hier kannst du später deinen eigenen Text eintragen. Beschreibe zum Beispiel, wie SALight Gartenpartys, Geburtstage und private Feiern mit Ambientebeleuchtung, Effektlicht und einer individuell abgestimmten Tanzflächenbeleuchtung gestaltet.",
+      "Kleine Feier, große Wirkung! Ob Geburtstag, Hochzeit oder Gartenparty – wir sorgen mit stimmungsvoller Beleuchtung, kraftvollem Sound und kreativen Effekten für die passende Atmosphäre. Von gemütlicher Ambientebeleuchtung bis zur energiegeladenen Party bieten wir individuelle Techniklösungen für jedes Budget. Auf Wunsch übernehmen wir Planung, Aufbau und Betreuung.",
 
     services: [
       "Individuelles Lichtkonzept",
@@ -33,7 +33,7 @@ export const projectCategories = [
     alt: "Dynamische Clubbeleuchtung von SALight",
 
     description:
-      "Hier kannst du später deinen eigenen Text eintragen. Beschreibe zum Beispiel energiegeladene Lichtshows, bewegte Beams, Stroboskop-Effekte, Nebel sowie die Live-Steuerung passend zur Musik.",
+      "Wenn Licht auf Beats trifft! Ob Clubnacht, DJ-Event oder ausgelassene Party – wir bringen mit dynamischen Lichtshows, kraftvollen Effekten und professioneller Lichttechnik jede Tanzfläche zum Leben. Von atmosphärischen Looks bis zu mitreißenden, taktsynchronen Shows entwickeln wir individuelle Lichtkonzepte, die perfekt zur Musik und Location passen.",
 
     services: [
       "Lichtshow und Programmierung",
