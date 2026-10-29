@@ -9,6 +9,7 @@ import Partner from "./pages/Partner.jsx";
 import Impressum from "./pages/Impressum.jsx";
 import UeberSALight from "./pages/UeberSALight.jsx";
 import Referenzen from "./pages/Referenzen.jsx";
+import Referenzen from "./pages/Referenzen";
 
 function PlaceholderPage({ eyebrow, title, description }) {
   return (
@@ -73,6 +74,8 @@ export default function App() {
       
       <Route path="/referenzen" element={<Referenzen />} />
 
+      <Route path="/eventanfragen" element={<Eventanfragen />} />
+
       {/* Weiterleitungen alter oder englischer URLs */}
 
       <Route
@@ -88,11 +91,6 @@ export default function App() {
       <Route
         path="/partners"
         element={<Navigate to="/partner" replace />}
-      />
-
-      <Route
-        path="/contact"
-        element={<Navigate to="/eventanfragen" replace />}
       />
 
       {/* Unbekannte URL */}
