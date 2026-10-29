@@ -66,15 +66,45 @@ export default function Eventanfragen() {
     setStep((previous) => Math.max(previous - 1, 1));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
 
-    // Der E-Mail-Versand wird im nächsten Schritt integriert.
-    // Bis dahin werden keine Daten übertragen.
+async function handleSubmit(event) {
+  event.preventDefault();
+
+  if (!form.privacyAccepted) {
+    alert("Bitte bestätige die Datenschutzhinweise.");
+    return;
+  }
+
+  try {
+    const response = await fetch("/api/eventanfrage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(
+        result.message || "Die Anfrage konnte nicht gesendet werden."
+      );
+    }
+
     alert(
-      "Das Formular ist vorbereitet. Der E-Mail-Versand wird noch eingerichtet."
+      "Vielen Dank! Deine Eventanfrage wurde erfolgreich versendet. Wir melden uns schnellstmöglich bei dir."
     );
-  };
+  } catch (error) {
+    console.error("Fehler beim Versand:", error);
+
+    alert(
+      error.message ||
+        "Beim Versand ist ein Fehler aufgetreten. Bitte versuche es erneut."
+    );
+  }
+}
+
 
   return (
     <main className="event-request-page">
