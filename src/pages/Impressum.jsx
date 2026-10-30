@@ -14,10 +14,6 @@ export default function Impressum() {
         <div className="imprint-image-box glass">
           <p className="small-label">Betreiberangaben</p>
           <img src="/images/impressum-daten.png" alt="Impressumsdaten SALight" />
-          <p className="muted-note">
-            Lege deine Bilddatei mit den Impressumsdaten unter
-            <code> public/images/impressum-daten.png </code> ab.
-          </p>
         </div>
       </section>
 
