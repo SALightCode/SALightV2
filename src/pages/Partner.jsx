@@ -14,7 +14,7 @@ const partners = [
     description:
       "Ein zuverlässiger Partner, mit jahrelanger Zusammenarbeit, für professionelle Veranstaltungen. Gemeinsam realisieren wir individuelle Projekte und sorgen für überzeugende Ergebnisse.",
     image: "/images/VideowallFKB.png",
-    website: "https://https://3phase-events.de/",
+    website: "https://3phase-events.de/",
   },
 
     {
@@ -23,7 +23,7 @@ const partners = [
     description:
       "Manuel Paulus steht für authentische Fotografie mit einem besonderen Gespür für Menschen und Momente. Besonders schätzen wir seine professionelle Arbeitsweise, sein vorausschauendes und smartes Handeln sowie seinen hohen Qualitätsanspruch. Eine Zusammenarbeit, bei der Professionalität und Menschlichkeit Hand in Hand gehen.",
     image: "/images/Manuel_Paulus_Logo.png",
-    website: "https://https://https://www.manuelpaulus.de/",
+    website: "https://www.manuelpaulus.de/",
   },
   
 ];
