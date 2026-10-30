@@ -2892,3 +2892,232 @@ main { position: relative; min-height: 100vh; isolation: isolate; }
   }
 }
 
+
+/* =========================================================
+   SALIGHT – PARTNERSEITE
+   ========================================================= */
+
+.partner-page {
+  min-height: 100vh;
+}
+
+/* Partner untereinander */
+
+.partner-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Einzelner Partner */
+
+.partner-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(28px, 5vw, 70px);
+  align-items: center;
+
+  padding: clamp(22px, 3vw, 40px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.partner-card:hover {
+  border-color: rgba(0, 255, 136, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-3px);
+}
+
+/* Partnerbild */
+
+.partner-image-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 250px;
+  aspect-ratio: 16 / 10;
+
+  overflow: hidden;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.partner-image-link:hover {
+  border-color: var(--green);
+  background: rgba(0, 255, 136, 0.045);
+}
+
+.partner-image-link img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 350px;
+
+  object-fit: contain;
+  padding: 24px;
+
+  transition: transform 0.35s ease;
+}
+
+.partner-image-link:hover img {
+  transform: scale(1.045);
+}
+
+/* Partnerinformationen */
+
+.partner-content {
+  min-width: 0;
+}
+
+.partner-content h2 {
+  margin: 0 0 12px;
+
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+
+  color: #ffffff;
+}
+
+.partner-category {
+  margin: 0 0 24px;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+
+  color: var(--green);
+}
+
+.partner-description {
+  max-width: 650px;
+  margin: 0 0 28px;
+
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* Website-Link */
+
+.partner-website {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 750;
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    gap 0.2s ease;
+}
+
+.partner-website svg {
+  color: var(--green);
+}
+
+.partner-website:hover {
+  color: var(--green);
+  gap: 15px;
+}
+
+/* Tastaturbedienung */
+
+.partner-image-link:focus-visible,
+.partner-website:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 5px;
+}
+
+/* =========================================================
+   PARTNER – TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .partner-card {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .partner-image-link {
+    min-height: 220px;
+  }
+}
+
+/* =========================================================
+   PARTNER – SMARTPHONE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .partner-list {
+    gap: 20px;
+  }
+
+  .partner-card {
+    padding: 18px;
+    border-radius: 22px;
+    gap: 24px;
+  }
+
+  .partner-image-link {
+    min-height: 180px;
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
+  }
+
+  .partner-image-link img {
+    padding: 18px;
+  }
+
+  .partner-content h2 {
+    font-size: 28px;
+  }
+
+  .partner-category {
+    margin-bottom: 16px;
+  }
+
+  .partner-description {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partner-card,
+  .partner-image-link,
+  .partner-image-link img,
+  .partner-website {
+    transition: none;
+  }
+
+  .partner-card:hover {
+    transform: none;
+  }
+
+  .partner-image-link:hover img {
+    transform: none;
+  }
+}
+
