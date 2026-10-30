@@ -1,57 +1,63 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
+/**
+ * Zurückhaltender SALight-Hintergrund:
+ * zwei diffuse Lichtakzente, zwei transparente Rauchschwaden, kein Raster.
+ */
 export default function Background() {
+  const sceneRef = useRef(null);
+
   useEffect(() => {
-    const updateScrollVars = () => {
-      const scrollY = window.scrollY || 0;
-      const maxScroll =
-        document.documentElement.scrollHeight - window.innerHeight;
+    const scene = sceneRef.current;
+    if (!scene) return;
 
-      const progress =
-        maxScroll > 0 ? Math.min(scrollY / maxScroll, 1) : 0;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+    if (reducedMotion.matches) return;
 
-      document.documentElement.style.setProperty(
-        "--bg-scroll",
-        progress.toFixed(4)
-      );
+    let frame = 0;
 
-      document.documentElement.style.setProperty(
-        "--beam-shift",
-        `${scrollY * 0.03}px`
-      );
-
-      document.documentElement.style.setProperty(
-        "--beam-rotate",
-        `${scrollY * 0.01}deg`
-      );
+    const update = () => {
+      frame = 0;
+      const page = window.scrollY / Math.max(window.innerHeight, 1);
+      const angle = Math.sin(page * 0.68) * 9;
+      scene.style.setProperty("--light-angle", `${angle.toFixed(2)}deg`);
     };
 
-    updateScrollVars();
-    window.addEventListener("scroll", updateScrollVars, { passive: true });
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
 
     return () => {
-      window.removeEventListener("scroll", updateScrollVars);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
     };
   }, []);
 
   return (
-    <>
-      <div className="stage-background" />
-      <div className="stage-vignette" />
-      <div className="noise-layer" />
-
-      <div className="beam beam-green beam-green-left" />
-      <div className="beam beam-green beam-green-right" />
-      <div className="beam beam-white beam-white-left" />
-      <div className="beam beam-white beam-white-right" />
-
-      <div className="haze haze-a" />
-      <div className="haze haze-b" />
-      <div className="haze haze-c" />
-      <div className="haze haze-d" />
-
-      <div className="ambient-glow ambient-glow-left" />
-      <div className="ambient-glow ambient-glow-right" />
-    </>
+    <div className="ambient-stage" ref={sceneRef} aria-hidden="true">
+      <div className="ambient-stage__light ambient-stage__light--green" />
+      <div className="ambient-stage__light ambient-stage__light--white" />
+      <img
+        className="ambient-stage__wisp ambient-stage__wisp--one"
+        src="/images/smoke-wisp.webp"
+        alt=""
+        decoding="async"
+      />
+      <img
+        className="ambient-stage__wisp ambient-stage__wisp--two"
+        src="/images/smoke-wisp.webp"
+        alt=""
+        decoding="async"
+      />
+      <div className="ambient-stage__shade" />
+    </div>
   );
 }
