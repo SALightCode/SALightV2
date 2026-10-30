@@ -3702,379 +3702,141 @@ main {
   }
 }
 
-/* =========================================================
-   SALIGHT – REALISTISCHER BÜHNENHINTERGRUND
-   ========================================================= */
 
-:root {
-  --bg-scroll: 0;
-  --beam-shift: 0px;
-  --beam-rotate: 0deg;
-}
+/*
+===============================================================================
+  26  GLOBALER HINTERGRUND – MINIMAL STAGE & SMOKE
+===============================================================================
+  Bewusst reduziert: kein Raster, zwei diffuse Lichtakzente und zwei
+  transparente, unregelmaessige Rauchschwaden (smoke-wisp.webp).
+  Erfordert src/components/Background.jsx aus diesem Update.
+*/
 
-.stage-background,
-.stage-vignette,
-.noise-layer,
-.beam,
-.haze,
-.ambient-glow {
+.ambient-stage {
+  --light-angle: 0deg;
   position: fixed;
   inset: 0;
-  pointer-events: none;
-}
-
-.stage-background {
-  z-index: -12;
-  background:
-    radial-gradient(
-      circle at 50% 18%,
-      rgba(18, 34, 24, 0.38) 0%,
-      rgba(8, 12, 10, 0.18) 24%,
-      rgba(4, 6, 5, 0.9) 58%,
-      #020303 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(5, 12, 8, 0.92) 0%,
-      rgba(3, 5, 4, 0.98) 100%
-    );
-}
-
-.stage-vignette {
-  z-index: -11;
-  background:
-    radial-gradient(
-      circle at center,
-      transparent 45%,
-      rgba(0, 0, 0, 0.12) 65%,
-      rgba(0, 0, 0, 0.38) 82%,
-      rgba(0, 0, 0, 0.72) 100%
-    );
-}
-
-/* dezentes Filmkorn */
-.noise-layer {
-  z-index: -10;
-  opacity: 0.05;
-  background-image:
-    radial-gradient(rgba(255, 255, 255, 0.16) 0.6px, transparent 0.6px);
-  background-size: 5px 5px;
-  mix-blend-mode: soft-light;
-}
-
-/* =========================================================
-   LICHTSTRAHLEN
-   ========================================================= */
-
-.beam {
   z-index: -8;
-  top: -8vh;
-  bottom: auto;
-  left: 50%;
-  width: 34vw;
-  height: 90vh;
-  transform-origin: top center;
-  filter: blur(10px);
-  opacity: 0.9;
-  mix-blend-mode: screen;
-  clip-path: polygon(47% 0%, 53% 0%, 100% 100%, 0% 100%);
+  overflow: hidden;
+  pointer-events: none;
+  background: #030504;
+  isolation: isolate;
 }
 
-.beam-green {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(195, 255, 220, 0.95) 0%,
-      rgba(88, 255, 155, 0.55) 10%,
-      rgba(28, 255, 124, 0.22) 42%,
-      rgba(9, 255, 118, 0.08) 68%,
-      rgba(0, 0, 0, 0) 100%
-    );
-  box-shadow:
-    0 0 90px rgba(28, 255, 124, 0.1),
-    0 0 180px rgba(28, 255, 124, 0.08);
-}
-
-.beam-white {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(235, 255, 250, 0.42) 12%,
-      rgba(215, 240, 255, 0.14) 44%,
-      rgba(255, 255, 255, 0.05) 70%,
-      rgba(0, 0, 0, 0) 100%
-    );
-  opacity: 0.55;
-  filter: blur(12px);
-}
-
-.beam-green-left {
-  transform:
-    translateX(calc(-30vw + (var(--beam-shift) * -0.18)))
-    rotate(calc(-27deg - var(--beam-rotate)));
-  animation: beamPulseGreenA 9s ease-in-out infinite;
-}
-
-.beam-green-right {
-  transform:
-    translateX(calc(3vw + (var(--beam-shift) * 0.12)))
-    rotate(calc(24deg + var(--beam-rotate)));
-  animation: beamPulseGreenB 11s ease-in-out infinite;
-}
-
-.beam-white-left {
-  width: 24vw;
-  height: 82vh;
-  transform:
-    translateX(calc(-8vw + (var(--beam-shift) * -0.08)))
-    rotate(calc(-9deg - (var(--beam-rotate) * 0.65)));
-  animation: beamPulseWhiteA 10s ease-in-out infinite;
-}
-
-.beam-white-right {
-  width: 24vw;
-  height: 84vh;
-  transform:
-    translateX(calc(-18vw + (var(--beam-shift) * 0.06)))
-    rotate(calc(10deg + (var(--beam-rotate) * 0.55)));
-  animation: beamPulseWhiteB 12s ease-in-out infinite;
-}
-
-/* =========================================================
-   HAZE / RAUCH
-   ========================================================= */
-
-.haze {
-  z-index: -7;
+/* Kein geometrischer Lichtkegel: nur weiche Reflexionen im Haze. */
+.ambient-stage__light {
+  position: absolute;
+  top: -25vh;
+  width: min(32vw, 380px);
+  height: 86vh;
   border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.9;
+  filter: blur(62px);
+  transform-origin: center top;
   mix-blend-mode: screen;
+  will-change: transform;
 }
 
-.haze-a {
+.ambient-stage__light--green {
+  left: 72%;
+  opacity: 0.48;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 255, 136, 0.09),
+    rgba(0, 190, 100, 0.10) 44%,
+    transparent 100%
+  );
+  transform: rotate(calc(-18deg + var(--light-angle)));
+}
+
+.ambient-stage__light--white {
+  left: 11%;
+  width: min(24vw, 280px);
+  opacity: 0.34;
+  background: linear-gradient(
+    to bottom,
+    rgba(230, 245, 242, 0.08),
+    rgba(194, 220, 212, 0.06) 48%,
+    transparent 100%
+  );
+  transform: rotate(calc(20deg - var(--light-angle)));
+}
+
+/* Die Struktur kommt aus einer transparenten Rauchtextur, nicht aus Kreisen. */
+.ambient-stage__wisp {
+  position: absolute;
+  display: block;
+  width: min(62vw, 820px);
+  height: auto;
+  user-select: none;
+  opacity: 0.30;
+  filter: blur(1.5px);
+  mix-blend-mode: screen;
+  backface-visibility: hidden;
+}
+
+.ambient-stage__wisp--one {
   top: 18vh;
-  left: 8vw;
-  width: 36vw;
-  height: 24vh;
-  background:
-    radial-gradient(
-      ellipse at center,
-      rgba(125, 255, 175, 0.2) 0%,
-      rgba(125, 255, 175, 0.1) 35%,
-      rgba(255, 255, 255, 0.03) 60%,
-      transparent 100%
-    );
-  animation: hazeFloatA 18s ease-in-out infinite;
+  left: -12vw;
+  animation: salightWispLeft 34s ease-in-out infinite alternate;
 }
 
-.haze-b {
-  top: 34vh;
-  right: 10vw;
-  width: 34vw;
-  height: 28vh;
-  background:
-    radial-gradient(
-      ellipse at center,
-      rgba(85, 255, 150, 0.18) 0%,
-      rgba(190, 255, 220, 0.08) 42%,
-      transparent 100%
-    );
-  animation: hazeFloatB 21s ease-in-out infinite;
+.ambient-stage__wisp--two {
+  top: 58vh;
+  right: -15vw;
+  width: min(47vw, 680px);
+  opacity: 0.19;
+  transform: scaleX(-1);
+  animation: salightWispRight 38s ease-in-out infinite alternate;
 }
 
-.haze-c {
-  top: 46vh;
-  left: 24vw;
-  width: 42vw;
-  height: 30vh;
-  background:
-    radial-gradient(
-      ellipse at center,
-      rgba(120, 255, 170, 0.14) 0%,
-      rgba(255, 255, 255, 0.045) 36%,
-      transparent 100%
-    );
-  animation: hazeFloatC 20s ease-in-out infinite;
+.ambient-stage__shade {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 35%,
+    transparent 18%,
+    rgba(0, 0, 0, 0.17) 73%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
 }
 
-.haze-d {
-  top: 56vh;
-  right: 18vw;
-  width: 28vw;
-  height: 20vh;
-  background:
-    radial-gradient(
-      ellipse at center,
-      rgba(95, 255, 155, 0.12) 0%,
-      rgba(255, 255, 255, 0.03) 38%,
-      transparent 100%
-    );
-  animation: hazeFloatD 23s ease-in-out infinite;
+@keyframes salightWispLeft {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(48px, -16px, 0) scale(1.045); }
 }
 
-/* seitlicher Glow */
-.ambient-glow {
-  z-index: -9;
-  width: 30vw;
-  height: 100vh;
-  top: 0;
-  filter: blur(80px);
-  opacity: 0.18;
+@keyframes salightWispRight {
+  from { transform: translate3d(0, 0, 0) scaleX(-1); }
+  to { transform: translate3d(-35px, 11px, 0) scaleX(-1) scale(1.035); }
 }
 
-.ambient-glow-left {
-  left: -8vw;
-  background:
-    radial-gradient(
-      ellipse at center,
-      rgba(12, 255, 100, 0.35) 0%,
-      rgba(12, 255, 100, 0.08) 42%,
-      transparent 75%
-    );
-}
-
-.ambient-glow-right {
-  right: -8vw;
-  background:
-    radial-gradient(
-      ellipse at center,
-      rgba(12, 255, 100, 0.32) 0%,
-      rgba(12, 255, 100, 0.07) 40%,
-      transparent 75%
-    );
-}
-
-/* =========================================================
-   ANIMATIONEN
-   ========================================================= */
-
-@keyframes beamPulseGreenA {
-  0%, 100% {
-    opacity: 0.72;
-    filter: blur(10px);
-  }
-  50% {
-    opacity: 0.96;
-    filter: blur(8px);
-  }
-}
-
-@keyframes beamPulseGreenB {
-  0%, 100% {
-    opacity: 0.62;
-    filter: blur(12px);
-  }
-  50% {
-    opacity: 0.88;
-    filter: blur(9px);
-  }
-}
-
-@keyframes beamPulseWhiteA {
-  0%, 100% {
-    opacity: 0.34;
-  }
-  50% {
-    opacity: 0.52;
-  }
-}
-
-@keyframes beamPulseWhiteB {
-  0%, 100% {
-    opacity: 0.28;
-  }
-  50% {
-    opacity: 0.46;
-  }
-}
-
-@keyframes hazeFloatA {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(3vw, 1.5vh, 0) scale(1.08);
-  }
-}
-
-@keyframes hazeFloatB {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-2vw, 2vh, 0) scale(1.12);
-  }
-}
-
-@keyframes hazeFloatC {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(2vw, -2vh, 0) scale(1.05);
-  }
-}
-
-@keyframes hazeFloatD {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-1.6vw, 1vh, 0) scale(1.09);
-  }
-}
-
-/* =========================================================
-   MOBILE / PERFORMANCE
-   ========================================================= */
-
-@media (max-width: 900px) {
-  .beam {
-    width: 48vw;
-    height: 72vh;
-  }
-
-  .beam-white-left,
-  .beam-white-right {
-    width: 30vw;
-    height: 68vh;
-  }
-
-  .haze-a,
-  .haze-b,
-  .haze-c,
-  .haze-d {
-    filter: blur(55px);
-  }
-}
-
-@media (max-width: 640px) {
-  .beam-white-left,
-  .beam-white-right {
+@media (max-width: 700px) {
+  .ambient-stage__light--white,
+  .ambient-stage__wisp--two {
     display: none;
   }
 
-  .beam-green-left,
-  .beam-green-right {
-    width: 58vw;
-    height: 62vh;
-    opacity: 0.6;
+  .ambient-stage__wisp--one {
+    width: 105vw;
+    left: -35vw;
+    top: 30vh;
+    opacity: 0.22;
   }
 
-  .ambient-glow {
-    opacity: 0.12;
-  }
-
-  .noise-layer {
-    opacity: 0.03;
+  .ambient-stage__light--green {
+    left: 65%;
+    width: 45vw;
+    opacity: 0.34;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .beam,
-  .haze {
-    animation: none !important;
+  .ambient-stage__light {
+    transform: none;
+    will-change: auto;
+  }
+
+  .ambient-stage__wisp {
+    animation: none;
   }
 }
