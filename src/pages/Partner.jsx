@@ -18,11 +18,11 @@ const partners = [
   },
 
     {
-    name: "3Phase-Events",
+    name: "Manuel Paulus Fotofrafie",
     category: "Fotografie",
     description:
       "Manuel Paulus steht für authentische Fotografie mit einem besonderen Gespür für Menschen und Momente. Besonders schätzen wir seine professionelle Arbeitsweise, sein vorausschauendes und smartes Handeln sowie seinen hohen Qualitätsanspruch. Eine Zusammenarbeit, bei der Professionalität und Menschlichkeit Hand in Hand gehen.",
-    image: "/images/Manuel_Paulus_Logo.webpg",
+    image: "/images/Manuel_Paulus_Logo.png",
     website: "https://https://https://www.manuelpaulus.de/",
   },
   
