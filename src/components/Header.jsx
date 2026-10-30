@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -19,6 +20,7 @@ export default function Header() {
   return (
     <>
       <header className="site-header">
+        {/* SALight Logo */}
         <Link
           className="brand"
           to="/"
@@ -26,15 +28,17 @@ export default function Header() {
           onClick={closeMenu}
         >
           <img
-            src="/images/logo.png"
-            alt="SALight Logo"
+            src="/images/SALightLogo.png"
+            alt="SALight"
             className="brand-logo"
           />
-
-          <span>SALight</span>
         </Link>
 
-        <nav className="desktop-nav" aria-label="Hauptnavigation">
+        {/* Desktop Navigation */}
+        <nav
+          className="desktop-nav"
+          aria-label="Hauptnavigation"
+        >
           {navItems.slice(0, 5).map((item) => (
             <NavLink
               key={item.href}
@@ -48,10 +52,15 @@ export default function Header() {
           ))}
         </nav>
 
-        <Link className="header-cta" to="/eventanfragen">
+        {/* Eventanfrage Button */}
+        <Link
+          className="header-cta"
+          to="/eventanfragen"
+        >
           Event anfragen
         </Link>
 
+        {/* Mobile Menü Button */}
         <button
           type="button"
           className="mobile-menu"
@@ -63,25 +72,34 @@ export default function Header() {
         </button>
       </header>
 
+      {/* Hintergrund Mobile Menü */}
       <div
-        className={`menu-backdrop ${menuOpen ? "visible" : ""}`}
+        className={`menu-backdrop ${
+          menuOpen ? "visible" : ""
+        }`}
         onClick={closeMenu}
         aria-hidden="true"
       />
 
+      {/* Mobile Navigation */}
       <aside
-        className={`mobile-drawer ${menuOpen ? "open" : ""}`}
+        className={`mobile-drawer ${
+          menuOpen ? "open" : ""
+        }`}
         aria-hidden={!menuOpen}
       >
         <div className="drawer-header">
-          <Link className="brand" to="/" onClick={closeMenu}>
+          <Link
+            className="brand"
+            to="/"
+            aria-label="SALight Startseite"
+            onClick={closeMenu}
+          >
             <img
-              src="/images/logo.png"
-              alt="SALight Logo"
+              src="/images/SALightLogo.png"
+              alt="SALight"
               className="brand-logo"
             />
-
-            <span>SALight</span>
           </Link>
 
           <button
@@ -94,14 +112,19 @@ export default function Header() {
           </button>
         </div>
 
-        <nav className="drawer-nav" aria-label="Mobile Navigation">
+        <nav
+          className="drawer-nav"
+          aria-label="Mobile Navigation"
+        >
           {navItems.map((item) => (
             <NavLink
               key={item.href}
               to={item.href}
               onClick={closeMenu}
               className={({ isActive }) =>
-                isActive ? "drawer-link active" : "drawer-link"
+                isActive
+                  ? "drawer-link active"
+                  : "drawer-link"
               }
             >
               {item.label}
