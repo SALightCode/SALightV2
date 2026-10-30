@@ -9,13 +9,23 @@ import { ArrowUpRight } from "lucide-react";
 
 const partners = [
   {
-    name: "Beispielpartner",
+    name: "3Phase-Events",
     category: "Veranstaltungstechnik",
     description:
-      "Ein zuverlässiger Partner für professionelle Veranstaltungen. Gemeinsam realisieren wir individuelle Projekte und sorgen für überzeugende Ergebnisse.",
-    image: "/images/partner-beispiel.png",
-    website: "https://example.com",
+      "Ein zuverlässiger Partner, mit jahrelanger Zusammenarbeit, für professionelle Veranstaltungen. Gemeinsam realisieren wir individuelle Projekte und sorgen für überzeugende Ergebnisse.",
+    image: "/images/VideowallFKB.png",
+    website: "https://https://3phase-events.de/",
   },
+
+    {
+    name: "3Phase-Events",
+    category: "Fotografie",
+    description:
+      "Manuel Paulus steht für authentische Fotografie mit einem besonderen Gespür für Menschen und Momente. Besonders schätzen wir seine professionelle Arbeitsweise, sein vorausschauendes und smartes Handeln sowie seinen hohen Qualitätsanspruch. Eine Zusammenarbeit, bei der Professionalität und Menschlichkeit Hand in Hand gehen.",
+    image: "/images/Manuel_Paulus_Logo.webpg",
+    website: "https://https://https://www.manuelpaulus.de/",
+  },
+  
 ];
 
 export default function Partner() {
