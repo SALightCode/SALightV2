@@ -3121,3 +3121,41 @@ main { position: relative; min-height: 100vh; isolation: isolate; }
   }
 }
 
+
+/* ==================================================
+   SALIGHT – HEADER LOGO
+   ================================================== */
+
+.site-header .brand,
+.drawer-header .brand {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+}
+
+.site-header .brand-logo,
+.drawer-header .brand-logo {
+  display: block;
+  width: auto;
+  height: 44px;
+  max-width: 190px;
+  object-fit: contain;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Smartphone */
+
+@media (max-width: 600px) {
+  .site-header .brand-logo,
+  .drawer-header .brand-logo {
+    height: 36px;
+    max-width: 150px;
+  }
+}
