@@ -25,6 +25,15 @@ const partners = [
     image: "/images/Manuel_Paulus_Logo.png",
     website: "https://www.manuelpaulus.de/",
   },
+
+      {
+    name: "Ginspiration Barkeeping",
+    category: "Dienstleistungen",
+    description:
+      "Wenn du für deine Feier noch gute Cocktails braucht bist du hier an der richtigen Adresse. Zertifiziert von der European Bartender School mit Jahrelanger Erfahrung im Barkeeping.",
+    image: "/images/Barkeeping.png",
+    website: "https://www.instagram.com/ginspirationbarkeeping?mdxt=MWJtamRuMXVnam54Mg==",
+  },
   
 ];
 
