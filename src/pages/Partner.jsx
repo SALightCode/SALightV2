@@ -1,31 +1,98 @@
+
 import PageShell from "../components/PageShell.jsx";
-import ContactBlock from "../components/ContactBlock.jsx";
-import { partners } from "../data/siteData.js";
+import { ArrowUpRight } from "lucide-react";
+
+// ==================================================
+// PARTNERDATEN
+// Hier kannst du später Partner ergänzen.
+// ==================================================
+
+const partners = [
+  {
+    name: "Beispielpartner",
+    category: "Veranstaltungstechnik",
+    description:
+      "Ein zuverlässiger Partner für professionelle Veranstaltungen. Gemeinsam realisieren wir individuelle Projekte und sorgen für überzeugende Ergebnisse.",
+    image: "/images/partner-beispiel.png",
+    website: "https://example.com",
+  },
+];
 
 export default function Partner() {
   return (
     <PageShell>
-      <section className="page-hero section-shell">
-        <p className="eyebrow">Partner</p>
-        <h1>Zusammenarbeit für stärkere Events.</h1>
-        <p>
-          SALight arbeitet mit Locations, DJs, Eventplanern und Dienstleistern zusammen,
-          um Veranstaltungen technisch und atmosphärisch sauber umzusetzen.
-        </p>
-      </section>
+      <main className="partner-page">
 
-      <section className="section-shell page-grid-spacing">
-        <div className="partner-grid">
-          {partners.map((partner) => (
-            <article className="partner-card glass" key={partner.title}>
-              <h3>{partner.title}</h3>
-              <p>{partner.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+        {/* Seitenüberschrift */}
+        <section className="page-hero section-shell">
+          <p className="eyebrow">Unser Netzwerk</p>
 
-      <ContactBlock />
+          <h1>
+            Starke Partner.
+            <span className="headline-accent">
+              Starke Zusammenarbeit.
+            </span>
+          </h1>
+
+          <p>
+            Gute Veranstaltungen entstehen durch
+            Zusammenarbeit. Hier stellen wir Unternehmen
+            und Dienstleister vor, mit denen wir
+            gemeinsam Projekte umsetzen.
+          </p>
+        </section>
+
+        {/* Partnerliste */}
+        <section className="section-shell section-spacing">
+          <div className="partner-list">
+
+            {partners.map((partner) => (
+              <article
+                className="partner-card"
+                key={partner.name}
+              >
+                <a
+                  className="partner-image-link"
+                  href={partner.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Website von ${partner.name} öffnen`}
+                >
+                  <img
+                    src={partner.image}
+                    alt={`Logo von ${partner.name}`}
+                    loading="lazy"
+                  />
+                </a>
+
+                <div className="partner-content">
+                  <h2>{partner.name}</h2>
+
+                  <p className="partner-category">
+                    {partner.category}
+                  </p>
+
+                  <p className="partner-description">
+                    {partner.description}
+                  </p>
+
+                  <a
+                    className="partner-website"
+                    href={partner.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Website besuchen
+                    <ArrowUpRight size={18} />
+                  </a>
+                </div>
+              </article>
+            ))}
+
+          </div>
+        </section>
+
+      </main>
     </PageShell>
   );
 }
